@@ -27,6 +27,12 @@ h3:hover {
     margin-bottom: 0; 
 }
 
+.editor-container p {
+    color: #fff;
+    text-align: center;
+    margin: 0;
+}
+
 .editor { 
     display: flex; 
     padding: 10px;
