@@ -2,24 +2,34 @@ body {
     display: flex; 
     flex-direction: column; 
     font-family: Arial, sans-serif; 
-    margin: 0; 
+    margin: 10px; 
+    background-color: #333b67;
 }
 .editor-container { 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
     height: 50vh; 
-    width: 100%; 
+    width: 100%;
+    margin-bottom: 0; 
 }
 
 .editor { 
     display: flex; 
-    padding: 10px; 
+    padding: 10px;
     border: 2px solid #ef0404;
     font-family: 'Courier New', Courier, monospace;
 }
 
 iframe { 
-    width: 100%; 
+    min-width: 1200px; 
     height: 50vh; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    background-color: #fff;
+}
+P {
+    color: #fff;
+    text-align: center;
 }
