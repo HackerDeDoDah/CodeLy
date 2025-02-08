@@ -1,9 +1,10 @@
 
 
 
-const htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"), { mode: "xml", lineNumbers: true });
-const cssEditor = CodeMirror.fromTextArea(document.getElementById("css"), { mode: "css", lineNumbers: true });
-const jsEditor = CodeMirror.fromTextArea(document.getElementById("js"), { mode: "javascript", lineNumbers: true });
+const htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"), { mode: "xml", lineNumbers: true, theme: "default" });
+const cssEditor = CodeMirror.fromTextArea(document.getElementById("css"), { mode: "css", lineNumbers: true, theme: "default" });
+const jsEditor = CodeMirror.fromTextArea(document.getElementById("js"), { mode: "javascript", lineNumbers: true, theme: "default" });
+
 
 function updatePreview() {
     const html = htmlEditor.getValue();
@@ -28,3 +29,10 @@ htmlEditor.on("inputRead", (editor, event) => {
     }
 });
 
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    const newTheme = document.body.classList.contains("dark-mode") ? "dracula" : "default";
+    htmlEditor.setOption("theme", newTheme);
+    cssEditor.setOption("theme", newTheme);
+    jsEditor.setOption("theme", newTheme);
+}

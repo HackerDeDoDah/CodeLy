@@ -4,6 +4,7 @@ body {
     font-family: Arial, sans-serif; 
     margin: 10px; 
     background-color: #333b67;
+    transition: background 0.3s, color 0.3s;
 }
 
 h3 {
@@ -11,7 +12,6 @@ h3 {
     text-decoration: underline;
     color: #fff;
     margin: 0;
-    
 }
 
 h3:hover {
@@ -34,11 +34,12 @@ h3:hover {
 }
 
 .editor { 
-    display: flex; 
-    padding: 10px;
-    border: 2px solid #ef0404;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 10px;
+    width: 33.33%; 
+    padding: 10px; 
+    height: 100%; 
+    background-color: #fff; 
+    color: #000; 
+    transition: background 0.3s, color 0.3s; 
 }
 
 iframe { 
@@ -55,4 +56,27 @@ P {
     color: #fff;
     text-align: center;
     margin-top: 0;
+}
+
+.toggle-btn { 
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 5px; 
+    padding: 2px 8px; 
+    cursor: pointer; 
+    background: #007acc; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+}
+
+.dark-mode { 
+    background-color: #1e1e1e; 
+    color: #d4d4d4; 
+}
+
+.dark-mode .editor { 
+    background-color: #2d2d2d; 
+    color: #d4d4d4; 
 }
