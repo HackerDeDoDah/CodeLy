@@ -1,10 +1,15 @@
+function createEditor(id, mode) {
+    return CodeMirror.fromTextArea(document.getElementById(id), {
+        mode: mode,
+        lineNumbers: true,
+        theme: "default",
+        extraKeys: { "Ctrl-Space": "autocomplete" },
+    });
+}
 
-
-
-const htmlEditor = CodeMirror.fromTextArea(document.getElementById("html"), { mode: "xml", lineNumbers: true, theme: "default" });
-const cssEditor = CodeMirror.fromTextArea(document.getElementById("css"), { mode: "css", lineNumbers: true, theme: "default" });
-const jsEditor = CodeMirror.fromTextArea(document.getElementById("js"), { mode: "javascript", lineNumbers: true, theme: "default" });
-
+const htmlEditor = createEditor("html", "xml");
+const cssEditor = createEditor("css", "css");
+const jsEditor = createEditor("js", "javascript");
 
 function updatePreview() {
     const html = htmlEditor.getValue();
@@ -19,7 +24,14 @@ function updatePreview() {
     }
 }
 
-[htmlEditor, cssEditor, jsEditor].forEach(editor => editor.on("change", updatePreview));
+[htmlEditor, cssEditor, jsEditor].forEach(editor => {
+    editor.on("change", updatePreview);
+    editor.on("inputRead", function(instance) {
+        if (instance.getOption("mode") !== "xml") {
+            instance.showHint();
+        }
+    });
+});
 
     // Add shortcut for "!" to generate a basic HTML structure
 htmlEditor.on("inputRead", (editor, event) => {
