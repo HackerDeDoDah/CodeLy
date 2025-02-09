@@ -1,4 +1,6 @@
-This is a trial of a code editor.
+This is a trial of a code editor based on codepen.
+
+Use it as much as you want, let me know if there is anything you want added.
 
 Typing ! (exclamation mark) will get you a basic HTML layout.
 
