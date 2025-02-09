@@ -15,13 +15,13 @@ h3 {
 }
 
 h3:hover {
-    color: #ccc;
+    color: #320ba7;
 }
 
 .editor-container { 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    grid-gap: 15px;
     height: 50vh; 
     width: 100%;
     margin-bottom: 0; 
@@ -45,7 +45,7 @@ h3:hover {
 iframe { 
     max-width: 1200px; 
     width: 100%;
-    height: 50vh; 
+    height: 250px; 
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
