@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeLy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/hint/show-hint.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/hint/show-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/hint/javascript-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/hint/css-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/hint/html-hint.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3>HTML Playground</h3>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+        </label>
+        <span class="toggle-label">MODE</span>
+        <div class="js-toggle-wrapper">
+            <label class="js-switch">
+                <input type="checkbox" id="jsEditorToggle" checked>
+                <span class="slider round"></span>
+            </label>
+            <span class="toggle-label">JS Editor</span>
+        </div>
+    </div>
+    <div class="editor-container">
+        <div class="editor-folder">
+            <p>HTML</p>
+            <textarea id="html" class="editor"></textarea>
+        </div>
+        <div class="editor-folder">
+            <p>CSS</p>
+            <textarea id="css" class="editor"></textarea>
+        </div>
+        <div class="editor-folder">
+            <p>JavaScript</p>
+            <textarea id="js" class="editor"></textarea>
+        </div>
+    </div>
+    <p>PREVIEW</p>
+    <iframe id="preview"></iframe>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

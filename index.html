@@ -3,38 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeLy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/theme/dracula.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/hint/show-hint.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/javascript/javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/css/css.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/xml/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/hint/show-hint.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/hint/javascript-hint.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/hint/css-hint.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/hint/html-hint.min.js"></script>
-    
+    <title>Developer Playground | CHRISDAYPRO</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h3>CodeLy</h3>
-    <button class="toggle-btn" onclick="toggleDarkMode()">Dark Mode</button>
-    <div class="editor-container">
-        <div class="editor-folder">
-            <textarea id="html" class="editor"></textarea>
+    <div class="landing-container">
+        <div class="image-section">
+            <img src="assets/chrisboy.png" alt="ChrisBoy" class="mascot-image">
         </div>
-        <div class="editor-folder">
-            <textarea id="css" class="editor"></textarea>
-        </div>
-        <div class="editor-folder">
-            <textarea id="js" class="editor"></textarea>
+        <div class="content-section">
+            <header>
+                <h1 class="heading">Developer Playground</h1>
+                <h3>The <strong>FREE</strong> online HTML/CSS/JS playground for young web developers</h3>
+            </header>
+
+            <div class="preferences-section">
+                <h2>Editor Preferences</h2>
+                <div class="js-toggle-wrapper">
+                    <label class="js-switch">
+                        <input type="checkbox" id="jsEditorToggle" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="toggle-label">Enable/Disable JavaScript Editor</span>
+                </div>
+                <button class="start-coding-btn" onclick="startCoding()">Start Coding</button>
+            </div>
+            <p>&copy; 2025 CHRISDAYPRO</p>
         </div>
     </div>
-    <p>PREVIEW</p>
-    <iframe id="preview"></iframe>
-
     <script src="scripts.js"></script>
 </body>
 </html>
