@@ -259,4 +259,29 @@ input:checked + .slider:before {
     margin-bottom: 40px;
 }
 
+.home-nav {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    background-color: #007acc;
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.home-nav:hover {
+    background-color: #005999;
+}
+
+.home-nav svg {
+    width: 16px;
+    height: 16px;
+}
+
 
