@@ -5,7 +5,6 @@ body {
     margin: 10px; 
     background-color: #333b67;
     transition: background 0.3s, color 0.3s;
-    overflow: hidden;
 }
 
 .heading { 
@@ -59,14 +58,12 @@ h3 {
     transition: background 0.3s, color 0.3s; 
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
     word-wrap: normal;
 }
 
 iframe { 
-    max-width: 1200px; 
     width: 100%;
-    height: 250px; 
+    height: 675px; 
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
@@ -116,6 +113,7 @@ P {
     right: 10px;
     display: flex;
     align-items: center;
+    z-index: 1000;
 }
 
 .theme-switch, .js-switch {
@@ -140,6 +138,7 @@ P {
     bottom: 0;
     background-color: #ccc;
     transition: .4s;
+    z-index: 1000;
 }
 
 .slider:before {
@@ -234,24 +233,23 @@ input:checked + .slider:before {
 .image-section {
     flex: 1;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    padding: 20px;
+    padding: 12px;
     background-color: rgba(255, 255, 255, 0.05);
 }
 
 .mascot-image {
     max-width: 100%;
-    height: auto;
+    height: 670px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .content-section {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 0 20px;
 }
 
 /* Update existing header styles for the new layout */
@@ -273,6 +271,7 @@ input:checked + .slider:before {
     border-radius: 15px;
     font-size: 14px;
     transition: background-color 0.3s;
+    z-index: 1000;
 }
 
 .home-nav:hover {
