@@ -27,6 +27,69 @@ const cssEditor = CodeMirror.fromTextArea(document.getElementById('css'), {
     scrollbarStyle: null
 });
 
+// Menu functionality
+const menuButton = document.querySelector('.menu-button');
+const menuDropdown = document.querySelector('.menu-dropdown');
+
+menuButton.addEventListener('click', () => {
+    menuDropdown.classList.toggle('active');
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    if (!menuButton.contains(e.target)) {
+        menuDropdown.classList.remove('active');
+    }
+});
+
+// Save and Load functionality
+document.getElementById('saveButton').addEventListener('click', () => {
+    const content = {
+        html: htmlEditor.getValue(),
+        css: cssEditor.getValue()
+    };
+    
+    const blob = new Blob([JSON.stringify(content)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'editor-content.json';
+    document.body.appendChild(a);
+    a.click();
+    
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    menuDropdown.classList.remove('active');
+});
+
+document.getElementById('loadButton').addEventListener('click', () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    
+    input.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        
+        reader.addEventListener('load', () => {
+            try {
+                const content = JSON.parse(reader.result);
+                htmlEditor.setValue(content.html || '');
+                cssEditor.setValue(content.css || '');
+                updatePreview();
+            } catch (err) {
+                alert('Error loading file: Invalid format');
+            }
+        });
+        
+        reader.readAsText(file);
+    });
+    
+    input.click();
+    menuDropdown.classList.remove('active');
+});
+
 // Template definitions
 const basicTemplate = `<!DOCTYPE html>
 <html lang="en">
