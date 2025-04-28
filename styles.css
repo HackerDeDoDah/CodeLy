@@ -156,6 +156,12 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+@media (max-width: 450px) {
+    .tips-button {
+        display: none;
+    }
+}
+
 .tips-dropdown {
     display: none;
     position: absolute;
@@ -204,8 +210,26 @@ kbd {
 }
 
 h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     margin: 1rem 0;
+}
+
+.placeholder {
+    display: none;
+    text-align: center;
+    height: 40px;
+}
+
+@media (max-width: 675px) {
+    h3 {
+        display: none;
+    }
+    .placeholder  {
+        display: block;
+    }
 }
 
 .main-container {
