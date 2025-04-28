@@ -2,6 +2,8 @@ This is a simple html and css code editor for anyone learning web developement.
 
 Use it as much as you want, let me know if there is anything you want added.
 
+For best experience use a PC or laptop. If using iPad or mobile, please use a external keyboard.
+
 Typing CTRL+SHIFT+1 will get you a basic HTML layout.
 
 ```html
