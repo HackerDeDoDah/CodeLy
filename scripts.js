@@ -1,93 +1,95 @@
-// Check if we're on the landing page or editor page
-const isLandingPage = !document.querySelector('.editor-container');
-
-if (isLandingPage) {
-    // Landing page functionality
-    function startCoding() {
-        const jsEnabled = document.getElementById('jsEditorToggle').checked;
-        localStorage.setItem('jsEditorEnabled', jsEnabled);
-        window.location.href = 'editor.html';
+// Initialize CodeMirror editors
+const htmlEditor = CodeMirror.fromTextArea(document.getElementById('html'), {
+    mode: 'htmlmixed',
+    theme: 'dracula',
+    lineNumbers: true,
+    autoCloseTags: true,
+    autoCloseBrackets: true,
+    matchBrackets: true,
+    lineWrapping: true,
+    tabSize: 2,
+    scrollbarStyle: null,
+    extraKeys: {
+        "Ctrl-Shift-1": function(cm) {
+            insertBasicTemplate();
+        },
+        "Ctrl-Shift-2": function(cm) {
+            insertEmailTemplate();
+        }
     }
-} else {
-    // Editor page functionality
-    function createEditor(id, mode) {
-        return CodeMirror.fromTextArea(document.getElementById(id), {
-            mode: mode,
-            lineNumbers: true,
-            theme: "dracula",
-            extraKeys: { "Tab": "autocomplete" },
-        });
-    }
+});
 
-    const htmlEditor = createEditor("html", "xml");
-    const cssEditor = createEditor("css", "css");
-    const jsEditor = createEditor("js", "javascript");
+const cssEditor = CodeMirror.fromTextArea(document.getElementById('css'), {
+    mode: 'css',
+    theme: 'dracula',
+    lineNumbers: true,
+    autoCloseBrackets: true,
+    matchBrackets: true,
+    lineWrapping: true,
+    tabSize: 2,
+    scrollbarStyle: null
+});
 
-    // Initialize dark mode by default
-    document.body.classList.add("dark-mode");
-    const darkModeToggle = document.getElementById("darkModeToggle");
-    darkModeToggle.checked = true;
-
-    // Initialize JS editor based on saved preference
-    const jsEditorToggle = document.getElementById("jsEditorToggle");
-    const editorContainer = document.querySelector(".editor-container");
-    const jsEnabled = localStorage.getItem('jsEditorEnabled') === 'true';
+// Template definitions
+const basicTemplate = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
     
-    jsEditorToggle.checked = jsEnabled;
-    if (!jsEnabled) {
-        editorContainer.classList.add("js-hidden");
-        jsEditor.setValue('');
-    }
+</body>
+</html>`;
 
-    function toggleJsEditor() {
-        editorContainer.classList.toggle("js-hidden");
-        const isJsVisible = jsEditorToggle.checked;
-        
-        if (!isJsVisible) {
-            jsEditor.setValue('');
-        }
-        updatePreview();
-    }
+const emailTemplate = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td style="padding: 20px; text-align: center;">
+                <h1>Email Heading</h1>
+                <p>Your email content here</p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>`;
 
-    jsEditorToggle.addEventListener("change", toggleJsEditor);
-
-    function updatePreview() {
-        const html = htmlEditor.getValue();
-        const css = "<style>" + cssEditor.getValue() + "</style>";
-        const js = jsEditorToggle.checked ? "<script>" + jsEditor.getValue() + "<\/script>" : "";
-        const iframe = document.getElementById("preview");
-        
-        if (iframe.contentDocument) {
-            iframe.contentDocument.open();
-            iframe.contentDocument.write(html + css + js);
-            iframe.contentDocument.close();
-        }
-    }
-
-    [htmlEditor, cssEditor, jsEditor].forEach(editor => {
-        editor.on("change", updatePreview);
-        editor.on("inputRead", function(instance) {
-            if (instance.getOption("mode") !== "xml") {
-                instance.showHint();
-            }
-        });
-    });
-
-    // Add shortcut for "!" to generate a basic HTML structure
-    htmlEditor.on("inputRead", (editor, event) => {
-        if (editor.getValue().trim() === "!") {
-            editor.setValue(`<!DOCTYPE html>\n<html lang='en'>\n<head>\n    <meta charset='UTF-8'>\n    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n    <title>Document</title>\n</head>\n<body>\n    <header>\n        \n    </header>\n  \n    <main>\n        \n    </main>\n\n</body>\n</html>`);
-            editor.setCursor({line: 9, ch: 8});
-        }
-    });
-
-    function toggleDarkMode() {
-        document.body.classList.toggle("dark-mode");
-        const newTheme = document.body.classList.contains("dark-mode") ? "dracula" : "default";
-        htmlEditor.setOption("theme", newTheme);
-        cssEditor.setOption("theme", newTheme);
-        jsEditor.setOption("theme", newTheme);
-    }
-
-    darkModeToggle.addEventListener("change", toggleDarkMode);
+// Template insertion functions
+function insertBasicTemplate() {
+    htmlEditor.setValue(basicTemplate);
 }
+
+function insertEmailTemplate() {
+    htmlEditor.setValue(emailTemplate);
+}
+
+// Update preview function
+function updatePreview() {
+    const html = htmlEditor.getValue();
+    const css = cssEditor.getValue();
+    const previewContent = `
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <style>${css}</style>
+            </head>
+            <body>${html}</body>
+        </html>
+    `;
+    document.getElementById('preview').srcdoc = previewContent;
+}
+
+// Event listeners for editor changes
+htmlEditor.on('change', updatePreview);
+cssEditor.on('change', updatePreview);
+
+// Initialize preview
+updatePreview();
