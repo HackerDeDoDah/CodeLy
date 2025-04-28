@@ -35,10 +35,21 @@ menuButton.addEventListener('click', () => {
     menuDropdown.classList.toggle('active');
 });
 
-// Close dropdown when clicking outside
+// Tips functionality
+const tipsButton = document.querySelector('.tips-button');
+const tipsDropdown = document.querySelector('.tips-dropdown');
+
+tipsButton.addEventListener('click', () => {
+    tipsDropdown.classList.toggle('active');
+});
+
+// Close dropdowns when clicking outside
 document.addEventListener('click', (e) => {
     if (!menuButton.contains(e.target)) {
         menuDropdown.classList.remove('active');
+    }
+    if (!tipsButton.contains(e.target) && !tipsDropdown.contains(e.target)) {
+        tipsDropdown.classList.remove('active');
     }
 });
 
@@ -119,20 +130,49 @@ const emailTemplate = `<!DOCTYPE html>
             </td>
         </tr>
     </table>
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td style="padding: 20px; text-align: center; font-size: 12px;">
+                <p>Footer &copy; 2025</p>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>`;
 
 // Template insertion functions
 function insertBasicTemplate() {
     htmlEditor.setValue(basicTemplate);
+    showBothEditors();
     // Position cursor inside the body tag
     htmlEditor.setCursor({line: 8, ch: 4});
 }
 
 function insertEmailTemplate() {
     htmlEditor.setValue(emailTemplate);
+    showEmailEditor();
     // Position cursor after the email heading
     htmlEditor.setCursor({line: 12, ch: 42});
+}
+
+function showEmailEditor() {
+    const htmlFolder = document.querySelector('.editor-folder:first-child');
+    const cssFolder = document.querySelector('.editor-folder:last-child');
+    
+    htmlFolder.classList.add('expanded');
+    cssFolder.classList.add('hidden');
+    cssEditor.setValue('');
+    htmlEditor.refresh();
+}
+
+function showBothEditors() {
+    const htmlFolder = document.querySelector('.editor-folder:first-child');
+    const cssFolder = document.querySelector('.editor-folder:last-child');
+    
+    htmlFolder.classList.remove('expanded');
+    cssFolder.classList.remove('hidden');
+    htmlEditor.refresh();
+    cssEditor.refresh();
 }
 
 // Update preview function

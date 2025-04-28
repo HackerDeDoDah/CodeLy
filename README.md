@@ -1,4 +1,4 @@
-This is a trial of a code editor based on codepen.
+This is a simple html and css code editor for anyone learning web developement.
 
 Use it as much as you want, let me know if there is anything you want added.
 
@@ -34,6 +34,13 @@ Typing CTRL+SHIFT+2 will get you a basic HTML EMAIL layout.
             <td style="padding: 20px; text-align: center;">
                 <h1>Email Heading</h1>
                 <p>Your email content here</p>
+            </td>
+        </tr>
+    </table>
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td style="padding: 20px; text-align: center; font-size: 12px;">
+                <p>Footer &copy; 2025</p>
             </td>
         </tr>
     </table>

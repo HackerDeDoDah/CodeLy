@@ -129,6 +129,76 @@ body {
     border-radius: 3px;
 }
 
+.tips-container {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.tips-button {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.tips-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tips-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    background-color: #2d2d2d;
+    border-radius: 5px;
+    padding: 1rem;
+    min-width: 300px;
+    width: 400px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.tips-dropdown.active {
+    display: block;
+}
+
+.tips-content h4 {
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.shortcut {
+    display: flex;
+    align-items: center;
+    background-color: #222222;
+    border-radius: 5px;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    padding: 10px;
+}
+
+kbd {
+    background-color: #444;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: #fff;
+}
+
+.shortcut span {
+    color: #a8a8a8;
+}
+
 h3 {
     text-align: center;
     margin: 1rem 0;
@@ -172,6 +242,29 @@ h3 {
     flex-direction: column;
 }
 
+.editor-folder.hidden {
+    display: none;
+}
+
+.editor-folder.expanded {
+    height: calc(100vh - 120px);
+}
+
+.editor-folder.expanded .CodeMirror {
+    height: calc(100vh - 160px) !important;
+    flex: 1;
+}
+
+/* Override the default editor heights when expanded */
+.editor-folder.expanded:first-child .CodeMirror {
+    height: calc(100vh - 160px) !important;
+    margin-bottom: 15px;
+}
+
+.editor-folder.expanded .editor-wrapper {
+    height: 100% !important;
+}
+
 .editor-wrapper {
     display: flex;
     background-color: #1e1e1e;
@@ -210,18 +303,19 @@ h3 {
 
 /* CodeMirror Customization */
 .CodeMirror {
+    position: relative;
     height: 320px !important;
     border-radius: 5px;
     font-family: 'Consolas', monospace;
     font-size: 14px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
-.editor-folder:first-child .CodeMirror {
-    height: 240px !important;
-}
-
-.editor-folder:last-child .CodeMirror {
-    height: 240px !important;
+.CodeMirror-scroll {
+    height: 100%;
 }
 
 .CodeMirror-gutters {
