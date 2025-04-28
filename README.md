@@ -4,7 +4,7 @@ Use it as much as you want, let me know if there is anything you want added.
 
 Typing CTRL+SHIFT+1 will get you a basic HTML layout.
 
-eg.
+eg.'''
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -15,11 +15,11 @@ eg.
 <body>
     
 </body>
-</html>
+</html>'''
 
 Typing CTRL+SHIFT+2 will get you a basic HTML EMAIL layout.
 
-eg.
+eg.'''
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,4 +37,4 @@ eg.
         </tr>
     </table>
 </body>
-</html>
+</html>'''
