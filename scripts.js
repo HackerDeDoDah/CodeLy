@@ -197,3 +197,23 @@ cssEditor.on('change', updatePreview);
 
 // Initialize preview
 updatePreview();
+
+// Check if user has already accepted cookies
+document.addEventListener('DOMContentLoaded', function() {
+    const cookieConsent = document.getElementById('cookie-consent');
+    const cookieOverlay = document.getElementById('cookie-overlay');
+    const acceptButton = document.getElementById('accept-cookies');
+
+    // Check if user has already accepted cookies
+    if (!localStorage.getItem('cookiesAccepted')) {
+        cookieConsent.style.display = 'block';
+        cookieOverlay.style.display = 'block';
+    }
+
+    // Handle accept button click
+    acceptButton.addEventListener('click', function() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        cookieConsent.style.display = 'none';
+        cookieOverlay.style.display = 'none';
+    });
+});
