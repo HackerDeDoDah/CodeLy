@@ -9,13 +9,10 @@ const htmlEditor = CodeMirror.fromTextArea(document.getElementById('html'), {
     lineWrapping: true,
     tabSize: 2,
     scrollbarStyle: null,
+    keyMap: 'sublime',
     extraKeys: {
-        "Ctrl-Shift-1": function(cm) {
-            insertBasicTemplate();
-        },
-        "Ctrl-Shift-2": function(cm) {
-            insertEmailTemplate();
-        }
+        "Shift-Ctrl-1": insertBasicTemplate,
+        "Shift-Ctrl-2": insertEmailTemplate
     }
 });
 
@@ -65,10 +62,14 @@ const emailTemplate = `<!DOCTYPE html>
 // Template insertion functions
 function insertBasicTemplate() {
     htmlEditor.setValue(basicTemplate);
+    // Position cursor inside the body tag
+    htmlEditor.setCursor({line: 8, ch: 4});
 }
 
 function insertEmailTemplate() {
     htmlEditor.setValue(emailTemplate);
+    // Position cursor after the email heading
+    htmlEditor.setCursor({line: 12, ch: 42});
 }
 
 // Update preview function
